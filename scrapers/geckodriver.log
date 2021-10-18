@@ -1,0 +1,60 @@
+1634568895906	geckodriver	INFO	Listening on 127.0.0.1:51698
+1634568898978	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "51699" "-no-remote" "-profile" "C:\\Users\\vande\\AppData\\Local\\Temp\\rust_mozprofileIMKsoK"
+1634568899569	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\vande\\AppData\\Local\\Temp\\rust_mozprofileIMKsoK\\search.json.mozlz4", (void 0)))
+DevTools listening on ws://localhost:51699/devtools/browser/001eee31-c45b-4c6d-b222-c5f6635e82ce
+1634568901664	Marionette	INFO	Listening on port 51705
+1634568902165	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1634568909511	Marionette	INFO	Stopped listening on port 51705
+JavaScript error: resource:///modules/Interactions.jsm, line 230: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIUserIdleService.removeIdleObserver]
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1634569130498	geckodriver	INFO	Listening on 127.0.0.1:49683
+1634569133566	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "49684" "-no-remote" "-profile" "C:\\Users\\vande\\AppData\\Local\\Temp\\rust_mozprofileV8Yiic"
+1634569133792	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\vande\\AppData\\Local\\Temp\\rust_mozprofileV8Yiic\\search.json.mozlz4", (void 0)))
+DevTools listening on ws://localhost:49684/devtools/browser/fa2b0eeb-8173-430c-ad73-4b55501061d7
+1634569135235	Marionette	INFO	Listening on port 49689
+1634569135625	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1634569139135	Marionette	INFO	Stopped listening on port 49689
+JavaScript error: resource:///modules/Interactions.jsm, line 230: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIUserIdleService.removeIdleObserver]
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1634569227850	geckodriver	INFO	Listening on 127.0.0.1:49729
+1634569230922	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "49730" "-no-remote" "-profile" "C:\\Users\\vande\\AppData\\Local\\Temp\\rust_mozprofilef7IW5L"
+1634569231153	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\vande\\AppData\\Local\\Temp\\rust_mozprofilef7IW5L\\search.json.mozlz4", (void 0)))
+DevTools listening on ws://localhost:49730/devtools/browser/63831b28-47ac-47d4-b875-596b5ab18a2e
+1634569232594	Marionette	INFO	Listening on port 49735
+1634569232998	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1634569236467	Marionette	INFO	Stopped listening on port 49735
+JavaScript error: resource:///modules/Interactions.jsm, line 230: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIUserIdleService.removeIdleObserver]
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1634569469859	geckodriver	INFO	Listening on 127.0.0.1:49823
+1634569472939	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "49824" "-no-remote" "-profile" "C:\\Users\\vande\\AppData\\Local\\Temp\\rust_mozprofilepc2mqm"
+1634569473170	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\vande\\AppData\\Local\\Temp\\rust_mozprofilepc2mqm\\search.json.mozlz4", (void 0)))
+DevTools listening on ws://localhost:49824/devtools/browser/4f804239-2c7c-49c6-a76d-5d0d5f586467
+1634569474492	Marionette	INFO	Listening on port 49829
+1634569474999	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1634569840582	geckodriver	INFO	Listening on 127.0.0.1:49892
+1634569843646	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "49893" "-no-remote" "-profile" "C:\\Users\\vande\\AppData\\Local\\Temp\\rust_mozprofileJWSYz8"
+1634569843877	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\vande\\AppData\\Local\\Temp\\rust_mozprofileJWSYz8\\search.json.mozlz4", (void 0)))
+DevTools listening on ws://localhost:49893/devtools/browser/8a22b593-02f7-494c-ad66-22d398db9234
+1634569845300	Marionette	INFO	Listening on port 49901
+1634569845687	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1634570828531	geckodriver	INFO	Listening on 127.0.0.1:64737
+1634572990391	geckodriver	INFO	Listening on 127.0.0.1:50929
+1634572993474	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "50930" "-no-remote" "-profile" "C:\\Users\\vande\\AppData\\Local\\Temp\\rust_mozprofilejIpLmR"
+1634572993720	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\vande\\AppData\\Local\\Temp\\rust_mozprofilejIpLmR\\search.json.mozlz4", (void 0)))
+DevTools listening on ws://localhost:50930/devtools/browser/4a596362-a16c-425c-8fb2-37ada110e4c7
+1634572995097	Marionette	INFO	Listening on port 50935
+1634572995548	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.log: WebExtensions: reset-default-search: starting.
+console.log: WebExtensions: reset-default-search: No addons in our list are installed.
