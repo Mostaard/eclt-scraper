@@ -5,7 +5,6 @@ data
 venv/
 .venv
 __pycache__
-./scrapers/geckodriver.exe
 geckodriver
 out.json
 parsed_data.json
