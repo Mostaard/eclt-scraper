@@ -1,9 +1,14 @@
 Alfabet:
+  model: eclt_legacy.Alphabet
   exclude: MijnAFOefeningen
   fields:
+    auteur: author
+    email: email
+    taalNiveau: lang_level
+    categorieOef: exercise_cat
+    soort_oefening: exercise_type
     TitelOefening: title
     Instructies: instructions
-    categorieOef: exercise_cat
     help: help_texts
     mooiGedaan: success_message
     mediaMap: media_folder
@@ -11,9 +16,11 @@ Alfabet:
     alfabet: alphabet
     lettersPerRij: letters_per_row
     juistVerdwijnt: remove_completed
-
+  reassigned:
+    lists: help
 
 AudioTimed:
+  model: eclt_legacy.AudioTimed
   exclude: MijnATOefeningen
   fields:
     auteur: author
@@ -22,8 +29,22 @@ AudioTimed:
     TitelOefening: title
     doelstelling: goal
     Instructies: instructions
+    bestandVooraf: file_before
+    titelVooraf: title_before
+    bestandHelp: file_help
+    titleHelp: title_help
+    toonAfb: show_image
+    toonTekst: show_text
+    audioBestand: audio_file
+    startAutomatisch: auto_start
+    volumehoogte: volume
+    afbeelding: image
+    extensieAfb: image_extension
+    overlays: overlays
+    vtt_bestand: vtt
 
 AudioVideo:
+  model: eclt_legacy.AudioVideo
   exclude: MijnAVOefeningen,test
   fields:
     auteur: author
@@ -33,12 +54,17 @@ AudioVideo:
     TitelOefening: title
     doelstelling: goal
     Instructies: instructions
+    soort_oefening: exercise_type
+    bestandVooraf: file_before
+    titelVooraf: title_before
     tijdsLimiet: time_limit
-    video_audiobestand: file_file
-    ondertitels: subtitle_file
-    extraPrent: image_file
+    video_audiobestand: media_file
+    ondertitels: subtitles_file
+    extraPrent: extra_image
+    tekstLink: text_link
 
 AVRecorder:
+  model: eclt_legacy.AVRecorder
   exclude: MijnAVROefeningen
   fields:
     auteur: author
@@ -52,6 +78,7 @@ AVRecorder:
     timerAflopend: timer_counts_up
 
 Draaiom:
+  model: eclt_legacy.Draaiom
   exclude: MijnDOOefeningen,GO-decenas_antes.html,CLT_Sp10A_alles.htm
   fields:
     auteur: author
@@ -131,35 +158,106 @@ Invullen:
     tipsMogelijk: hint_possible
     dialoog: is_dialogue
     video_audiobestand: video_audio_file
-    bestandsExtentie : file_extention
+    bestandsExtentie: file_extention
     ondertitels: subtitles
     audioAchteraf: audio_after
     startAutomatisch: auto_start
     afbBestand: image_file
 
+JaNeeLijst:
+  exclude: MijnJNOefeningen
+  fields:
+    auteur: author
+    email: email
+    taalNiveau: lang_level
+    categorieOef: exercise_cat
+    soort_oefening: exercise_type # 0 : just text,1 audio, 2video, 3reading
+    TitelOefening: title
+    Instructies: instructions
+    bestandvooraf: file_before
+    titelVooraf: title_before
+    bestandHelp: file_help
+    titelHelp: help_title
+    aantalKolommen: columns
+    itemsJuist: items_correct
+    itemsVerkeerd: items_wrong
+    mediaBestand: media_file
+    extensie_mbst: media_extension
+    toonAfbSec: show_image_seconds
+    prentBestand: image_file
+    VolgendeOef: next_exercise
 
+JaNeePr1Per1:
+  exclude: MijnJNP1Oefeningen
 
+JaNeePrent:
+  exclude: MijnJNPOefeningen
 
+JuisteKolom:
+  exclude: MijnJKOefeningen
 
+JuisteLetter:
+  exclude: MijnJLOefeningen
 
+JuistePr1Per1:
+  exclude: MijnJP1Oefeningen
 
+JuistePrent:
+  exclude: MijnJPOefeningen
 
+JuisteWoord:
+  exclude: MijnJWOefeningen
 
+JuistFout:
+  exclude: MijnJFOefeningen
 
+Klemtoon:
+  exclude: MijnKlOefeningen
 
+KlikPrent:
+  exclude: MijnKpOefeningen
 
+Kruiswoord:
+  exclude: MijnKwOefeningen
 
+Leestekst:
+  exclude: MijnLTOefeningen
 
+LettersOrdenen:
+  exclude: MijnLoOefeningen
 
+Meerkeuze:
+  exclude: MijnMKOefeningen
 
+MeerkMJuist:
+  exclude: MijnMKOefeningen
 
+MeerkTest:
+  exclude: MijnMktOefeningen
 
+MeerkVast:
+  exclude: MijnMkvOefeningen
 
+PrentVolgordeS:
+  exclude: MijnPVSOefeningen
 
+Slepen:
+  exclude: MijnSlOefeningen
 
+Tonos:
+  exclude: MijnTNOefeningen
 
+Uitspraak:
+  exclude: MijnUOefeningen
 
+WoordVolgorde:
+  exclude: MijnWvOefeningen
 
+WoordVolgordeM:
+  exclude: MijnWvMOefeningen
 
+ZinsVolgorde:
+  exclude: MijnZvOefeningen
 
-
+ZinsVolgordeS:
+  exclude: MijnZVSOefeningen

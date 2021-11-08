@@ -1,15 +1,2 @@
 Alfabet:
-  model: eclt_legacy.Alphabet
   exclude: MijnAFOefeningen
-  fields:
-    TitelOefening: name
-    Instructies: instructions
-    categorieOef: exercise_cat
-    help: help_texts
-    mooiGedaan: success_message
-    mediaMap: media_folder
-    mediaExtensie: media_extension
-    alfabet: alphabet
-    juistVerdwijnt: remove_completed
-  reassigned:
-    lists: help
