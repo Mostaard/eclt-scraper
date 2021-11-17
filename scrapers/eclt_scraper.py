@@ -103,6 +103,7 @@ class ExerciseScraper:
         self.js_scraper.set_file(exercise_path)
         exercise = dict()
         exercise['model'] = self.tutori_model
+        exercise['pk'] = None
         exercise['fields'] = dict()
         exercise['fields']['ex_type'] = self.exercise.lower()
         exercise['fields']['file_name'] = exercise_path.split(
@@ -203,7 +204,7 @@ def run():
 
 
 # Set variables depending on the environment
-MODEL_NAME = 'eclt_legacy.legacy_exercise'
+MODEL_NAME = 'eclt_legacy.LegacyExercise'
 delimiter = '/'
 
 run()
