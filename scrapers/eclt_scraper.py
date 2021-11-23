@@ -12,6 +12,10 @@ from scrapers.jsparser import Parser
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)
 
+# Set variables depending on the environment
+MODEL_NAME = 'tutori_eclt_legacy.LegacyExercise'
+delimiter = '/'
+
 
 class JavascriptVariableScraper:
     soup = None
@@ -95,7 +99,7 @@ class ExerciseScraper:
         self.exclude = exclude
         self.folder_scraper = FolderScraper(exercise)
         self.js_scraper = JavascriptVariableScraper()
-        self.tutori_model = tutori_model or MODEL_NAME
+        self.tutori_model = tutori_model
         self.result = []
         self.error_margin = ErrorMargin(self.folder_scraper)
 
@@ -195,16 +199,13 @@ def run():
         conf = yaml.safe_load(f)
         for key, value in conf.items():
             scraper = ExerciseScraper(
-                key, value['exclude'].split(','), value.get('model', None))
+                key, value['exclude'].split(','), value.get('model', MODEL_NAME))
             scraper.run()
             # scraper.close()
-            f = open("scrapers/output/out.json", "w+", encoding="utf-8")
+            f = open(
+                f"scrapers/output/{key.lower()}.json", "w+", encoding="utf-8")
             f.write(json.dumps(scraper.result, ensure_ascii=False))
             f.close()
 
-
-# Set variables depending on the environment
-MODEL_NAME = 'eclt_legacy.LegacyExercise'
-delimiter = '/'
 
 run()
