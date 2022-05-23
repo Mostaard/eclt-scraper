@@ -44,7 +44,10 @@ class Parser:
             value += obj['value']
             return value
 
-        value += obj['right']['value']
+        try:
+            value += obj['right']['value']
+        except Exception as e:
+            print(e)
         return value
 
     def parse_expression(self, expression):

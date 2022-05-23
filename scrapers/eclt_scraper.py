@@ -40,8 +40,10 @@ class JavascriptVariableScraper:
                 else:
                     self.page_title = ''
 
+                # self.script = str(self.soup.find_all('script', attrs={'src': False})[0].string).replace('<!--', '').replace(
+                #     '-->', '').replace('#', '').replace(r'http://', '').replace(r'https://', '')
                 self.script = str(self.soup.find_all('script', attrs={'src': False})[0].string).replace('<!--', '').replace(
-                    '-->', '').replace('#', '').replace(r'http://', '').replace(r'https://', '')
+                    '-->', '').replace(r'http://', '').replace(r'https://', '')
 
                 # Remove simple comments
                 self.script = re.sub(r'//.*\n', '', self.script)
@@ -57,6 +59,10 @@ class JavascriptVariableScraper:
                 # Fix Uitspraak scripts
                 self.script = self.script.replace(
                     '"\n                    "', '')
+                
+                # Fix 'juistepr1per1' scripts by removing breedteTV and hoogteTV lines from scripts (they are not needed and break the parser)
+                self.script = re.sub(r'var breedteTV.*\n', '', self.script)
+                self.script = re.sub(r'var hoogteTV.*\n', '', self.script)
 
         except IndexError:
             logging.error(f'No suitable script found in {self.file}')
@@ -116,6 +122,16 @@ class ExerciseScraper:
             delimiter)[-2]
         exercise['fields']['page_title'] = self.js_scraper.page_title
         exercise['fields']['data'] = self.retrieve_vars()
+
+        # Type specific fields
+        if self.exercise.lower() == 'avrecorder':
+            if self.js_scraper.soup:
+                opgave_div = self.js_scraper.soup.find(
+                    'div', attrs={'id': 'opgave'})
+                opgave = opgave_div.text.replace(
+                    '../../../', 'https://e-lan.be/').replace('\t', '') if opgave_div else ''
+                exercise['fields']['data']['opgave'] = opgave
+
         self.result.append(exercise)
 
     def run(self):

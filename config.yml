@@ -96,6 +96,9 @@ Draaiom:
     Soort1: type_1
     Soort2: type_2
 
+Getallen:
+  exclude: MijnGTOefeningen
+
 Invul1Per1:
   exclude: MijnInv1Oefening
   fields:
@@ -166,26 +169,6 @@ Invullen:
 
 JaNeeLijst:
   exclude: MijnJNOefeningen
-  fields:
-    auteur: author
-    email: email
-    taalNiveau: lang_level
-    categorieOef: exercise_cat
-    soort_oefening: exercise_type # 0 : just text,1 audio, 2video, 3reading
-    TitelOefening: title
-    Instructies: instructions
-    bestandvooraf: file_before
-    titelVooraf: title_before
-    bestandHelp: file_help
-    titelHelp: help_title
-    aantalKolommen: columns
-    itemsJuist: items_correct
-    itemsVerkeerd: items_wrong
-    mediaBestand: media_file
-    extensie_mbst: media_extension
-    toonAfbSec: show_image_seconds
-    prentBestand: image_file
-    VolgendeOef: next_exercise
 
 JaNeePr1Per1:
   exclude: MijnJNP1Oefeningen
