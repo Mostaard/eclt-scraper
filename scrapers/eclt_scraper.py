@@ -13,7 +13,7 @@ logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)
 
 # Set variables depending on the environment
-MODEL_NAME = 'tutori_eclt_legacy.LegacyExercise'
+MODEL_NAME = 'mentori_eclt_legacy.LegacyExercise'
 delimiter = '/'
 
 
