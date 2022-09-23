@@ -1,12 +1,14 @@
 import json
 import logging
+import os
+import re
 from collections import defaultdict
 from datetime import datetime
 from pathlib import Path
 
-import re
 import yaml
 from bs4 import BeautifulSoup
+
 from scrapers.jsparser import Parser
 
 logging.basicConfig(level=logging.INFO)
@@ -14,7 +16,11 @@ log = logging.getLogger(__name__)
 
 # Set variables depending on the environment
 MODEL_NAME = 'mentori_eclt_legacy.LegacyExercise'
-delimiter = '/'
+
+
+def split_path(path):
+    path = os.path.normpath(path)
+    return path.split(os.sep)
 
 
 class JavascriptVariableScraper:
@@ -42,7 +48,8 @@ class JavascriptVariableScraper:
 
                 # self.script = str(self.soup.find_all('script', attrs={'src': False})[0].string).replace('<!--', '').replace(
                 #     '-->', '').replace('#', '').replace(r'http://', '').replace(r'https://', '')
-                self.script = str(self.soup.find_all('script', attrs={'src': False})[0].string).replace('<!--', '').replace(
+                self.script = str(self.soup.find_all('script', attrs={'src': False})[
+                                      0].string).replace('<!--', '').replace(
                     '-->', '').replace(r'http://', '').replace(r'https://', '')
 
                 # Remove simple comments
@@ -59,7 +66,7 @@ class JavascriptVariableScraper:
                 # Fix Uitspraak scripts
                 self.script = self.script.replace(
                     '"\n                    "', '')
-                
+
                 # Fix 'juistepr1per1' scripts by removing breedteTV and hoogteTV lines from scripts (they are not needed and break the parser)
                 self.script = re.sub(r'var breedteTV.*\n', '', self.script)
                 self.script = re.sub(r'var hoogteTV.*\n', '', self.script)
@@ -116,10 +123,8 @@ class ExerciseScraper:
         exercise['pk'] = None
         exercise['fields'] = dict()
         exercise['fields']['ex_type'] = self.exercise.lower()
-        exercise['fields']['file_name'] = exercise_path.split(
-            delimiter)[-1]
-        exercise['fields']['language'] = exercise_path.split(
-            delimiter)[-2]
+        exercise['fields']['file_name'] = split_path(exercise_path)[-1]
+        exercise['fields']['language'] = split_path(exercise_path)[-2]
         exercise['fields']['page_title'] = self.js_scraper.page_title
         exercise['fields']['data'] = self.retrieve_vars()
 
@@ -129,14 +134,19 @@ class ExerciseScraper:
                 opgave_div = self.js_scraper.soup.find(
                     'div', attrs={'id': 'opgave'})
                 opgave = opgave_div.text.replace(
-                    '../../../', 'https://e-lan.be/').replace('\t', '') if opgave_div else ''
+                    '../../../', 'https://e-lan.be/').replace('\t',
+                                                              '') if opgave_div else ''
                 exercise['fields']['data']['opgave'] = opgave
 
         self.result.append(exercise)
 
     def run(self):
+
+
+
         for exercise in [e for e in self.folder_scraper.exercises if
-                         (e.split(delimiter)[-2] not in self.exclude and e.split(delimiter)[-1] not in self.exclude)]:
+                         (split_path(e)[-2] not in self.exclude and
+                          split_path(e)[-1] not in self.exclude)]:
             self.scrape_exercise(exercise)
             self.folder_scraper.increment_and_log()
 
@@ -170,7 +180,7 @@ class FolderScraper:
 
     def __init__(self, exercise: str):
         self.exercise = exercise
-        self.exercise_name = self.exercise.split(delimiter)[-1]
+        self.exercise_name = split_path(exercise)
         self.retrieve_exercise_paths()
 
     def get_folder(self):
