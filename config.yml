@@ -1,172 +1,27 @@
 Alfabet:
-  model: eclt_legacy.Alphabet
   exclude: MijnAFOefeningen
-  fields:
-    auteur: author
-    email: email
-    taalNiveau: lang_level
-    categorieOef: exercise_cat
-    soort_oefening: exercise_type
-    TitelOefening: title
-    Instructies: instructions
-    help: help_texts
-    mooiGedaan: success_message
-    mediaMap: media_folder
-    mediaExtensie: media_extension
-    alfabet: alphabet
-    lettersPerRij: letters_per_row
-    juistVerdwijnt: remove_completed
-  reassigned:
-    lists: help
 
 AudioTimed:
-  model: eclt_legacy.AudioTimed
   exclude: MijnATOefeningen
-  fields:
-    auteur: author
-    email: email
-    categorieOef: exercise_cat
-    TitelOefening: title
-    doelstelling: goal
-    Instructies: instructions
-    bestandVooraf: file_before
-    titelVooraf: title_before
-    bestandHelp: file_help
-    titleHelp: title_help
-    toonAfb: show_image
-    toonTekst: show_text
-    audioBestand: audio_file
-    startAutomatisch: auto_start
-    volumehoogte: volume
-    afbeelding: image
-    extensieAfb: image_extension
-    overlays: overlays
-    vtt_bestand: vtt
 
 AudioVideo:
-  model: eclt_legacy.AudioVideo
   exclude: MijnAVOefeningen,test
-  fields:
-    auteur: author
-    email: email
-    taalNiveau: lang_level
-    categorieOef: exercise_cat
-    TitelOefening: title
-    doelstelling: goal
-    Instructies: instructions
-    soort_oefening: exercise_type
-    bestandVooraf: file_before
-    titelVooraf: title_before
-    tijdsLimiet: time_limit
-    video_audiobestand: media_file
-    ondertitels: subtitles_file
-    extraPrent: extra_image
-    tekstLink: text_link
 
 AVRecorder:
-  model: eclt_legacy.AVRecorder
   exclude: MijnAVROefeningen
-  fields:
-    auteur: author
-    email: email
-    categorieOef: exercise_cat
-    TitelOefening: title
-    doelstelling: goal
-    Instructies: instructions
-    isAudio: is_audio_only
-    maxduur: max_length
-    timerAflopend: timer_counts_up
 
 Draaiom:
-  model: eclt_legacy.Draaiom
   exclude: MijnDOOefeningen,GO-decenas_antes.html,CLT_Sp10A_alles.htm
-  fields:
-    auteur: author
-    email: email
-    taalNiveau: lang_level
-    categorieOef: exercise_cat
-    TitelOefening: title
-    Instructies: instructions
-    bestandvooraf: file_before
-    titelVooraf: title_before
-    bestandHelp: file_help
-    titelHelp: help_title
-    Reeks1: series_1
-    Reeks2: series_2
-    Soort1: type_1
-    Soort2: type_2
 
 Getallen:
   exclude: MijnGTOefeningen
 
 Invul1Per1:
   exclude: MijnInv1Oefening
-  fields:
-    auteur: author
-    email: email
-    taalNiveau: lang_level
-    categorieOef: exercise_cat
-    oef_test: exercise_type # 0 test or exerice, 1 exercise , 2 test
-    tijdsLimiet: time_limit # in minutes
-    soortInbreng: input_type # 0 :letters, 1:numbers, 2both
-    tekenSet: possible_chars
-    alleTekens: all_chars
-    TitelOefening: title
-    Instructies: instructions
-    bestandvooraf: file_before
-    titelVooraf: title_before
-    bestandHelp: file_help
-    titelHelp: help_title
-    uitgebreideHelpBijTest: extended_help_during_test
-    tekst: text
-    hulpMogelijk: help_possible
-    tipsMogelijk: hint_possible
-    afbBestand: image_file
-    afbExtensie: image_extention
-    afbReeks: is_image_list
-    afbNummers: image_numbers
-    afbNul: has_zero_image
-    mediumBestand: medium_file
-    mediumExtensie: medium_extention
-    mediumReeks: is_medium_list
-    mediumNummers: medium_numbers
-    audioAchteraf: audio_after
-  reassigned:
-    lists: tekst
-  initializers:
-    tekst: []
 
 Invullen:
   exclude: MijnInvOefening
-  fields:
-    auteur: author
-    email: email
-    taalNiveau: lang_level
-    categorieOef: exercise_cat
-    soort_oefening: exercise_type # 0 : just text,1 audio, 2video, 3reading
-    oef_test: exercise_type # 0 test or exercise, 1 exercise , 2 test
-    tijdsLimiet: time_limit
-    soortInbreng: input_type # 0 :letters, 1:numbers, 2both
-    tekenSet: possible_chars
-    alleTekens: all_chars
-    TitelOefening: title
-    Instructies: instructions
-    TitlePassage: title_passage
-    bestandvooraf: file_before
-    titelVooraf: title_before
-    bestandHelp: file_help
-    titelHelp: help_title
-    tekst: text
-    hulpMogelijk: help_possible
-    tipsMogelijk: hint_possible
-    dialoog: is_dialogue
-    video_audiobestand: video_audio_file
-    bestandsExtentie: file_extention
-    ondertitels: subtitles
-    audioAchteraf: audio_after
-    startAutomatisch: auto_start
-    afbBestand: image_file
-
+  
 JaNeeLijst:
   exclude: MijnJNOefeningen
 
