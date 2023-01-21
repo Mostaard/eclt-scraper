@@ -141,9 +141,6 @@ class ExerciseScraper:
         self.result.append(exercise)
 
     def run(self):
-
-
-
         for exercise in [e for e in self.folder_scraper.exercises if
                          (split_path(e)[-2] not in self.exclude and
                           split_path(e)[-1] not in self.exclude)]:
@@ -232,6 +229,3 @@ def run():
                 f"scrapers/output/{key.lower()}.json", "w+", encoding="utf-8")
             f.write(json.dumps(scraper.result, ensure_ascii=False))
             f.close()
-
-
-run()
