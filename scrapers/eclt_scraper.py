@@ -171,11 +171,11 @@ class ExerciseScraper:
 class FolderScraper:
     base_folder = 'scrapers/data/Muis/{}'
     suffixes = [".htm", ".html"]
-    exercises = []
-    counter = 0
-    start = datetime.now()
 
     def __init__(self, exercise: str):
+        self.counter = 0
+        self.start = datetime.now()
+        self.exercises = []
         self.exercise = exercise
         self.exercise_name = split_path(exercise)
         self.retrieve_exercise_paths()
@@ -225,7 +225,6 @@ def run():
             scraper = ExerciseScraper(
                 key, value['exclude'].split(','), value.get('model', MODEL_NAME))
             scraper.run()
-            # scraper.close()
             f = open(
                 f"scrapers/output/{key.lower()}.json", "w+", encoding="utf-8")
             f.write(json.dumps(scraper.result, ensure_ascii=False))
