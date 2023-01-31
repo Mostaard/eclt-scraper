@@ -221,6 +221,7 @@ def run():
     with open('dev-config.yml', 'r') as f:
         conf = yaml.safe_load(f)
         for key, value in conf.items():
+            logging.info(f'RUNNING SCRAPER FOR {key}')
             scraper = ExerciseScraper(
                 key, value['exclude'].split(','), value.get('model', MODEL_NAME))
             scraper.run()
