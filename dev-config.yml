@@ -1,2 +1,22 @@
+Invul1Per1:
+  exclude: MijnInv1Oefening
 Invullen:
   exclude: MijnInvOefening
+JaNeeLijst:
+  exclude: MijnJNOefeningen
+JaNeePr1Per1:
+  exclude: MijnJNP1Oefeningen
+JaNeePrent:
+  exclude: MijnJNPOefeningen
+JuistePr1Per1:
+  exclude: MijnJP1Oefeningen
+JuistePrent:
+  exclude: MijnJPOefeningen
+JuistFout:
+  exclude: MijnJFOefeningen
+Meerkeuze:
+  exclude: MijnMKOefeningen
+MeerkMJuist:
+  exclude: MijnMKOefeningen
+MeerkVast:
+  exclude: MijnMkvOefeningen
