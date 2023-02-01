@@ -122,7 +122,7 @@ class ExerciseScraper:
         exercise['model'] = self.tutori_model
         exercise['pk'] = None
         exercise['fields'] = dict()
-        exercise['fields']['ex_type'] = self.exercise.lower()
+        exercise['fields']['ex_type'] = self.exercise
         exercise['fields']['file_name'] = split_path(exercise_path)[-1]
         exercise['fields']['language'] = split_path(exercise_path)[-2]
         exercise['fields']['page_title'] = self.js_scraper.page_title
