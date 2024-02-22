@@ -10,7 +10,7 @@ logging.basicConfig(level=logging.DEBUG)
 log = logging.getLogger(__name__)
 
 header = ['course', 'section', 'section_title', 'ex_type', 'module', 'filename',
-          'ex_name']
+          'ex_name', 'test_type']
 
 data = []
 modules = []
@@ -37,6 +37,7 @@ def scrape_ovp(file: TextIO, group, section):
                 # ex_name
                 row.append(
                     a.contents[0].replace('\t', '').replace('\n', '').replace(',', ''))
+                row.append(link[5].split('?')[1] if len(link[5].split('?')) > 1 else '')
                 data.append(row)
         except (KeyError, IndexError, TypeError):
             log.error('something missing')
