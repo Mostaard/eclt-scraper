@@ -1,3 +1,4 @@
+import chardet
 import json
 import logging
 import os
@@ -28,14 +29,20 @@ class JavascriptVariableScraper:
     script = None
     file = None
 
+    def detect_encoding(self, file_path):
+        with open(file_path, 'rb') as f:
+            raw_data = f.read()
+            result = chardet.detect(raw_data)
+            return result['encoding']
+            
+
     def set_file(self, file):
         self.file = file
-        try:
-            with open(file, encoding='utf8') as fh:
-                self.soup = BeautifulSoup(fh.read(), features="html.parser")
-                self.set_trimmed_script()
-        except UnicodeDecodeError as e:
-            logging.error(f'Problem loading {self.file} - {e}')
+        encoding = self.detect_encoding(file)
+        with open(file, encoding=encoding) as fh:
+            self.soup = BeautifulSoup(fh.read(), features="html.parser")
+            self.set_trimmed_script()
+        
 
     def set_trimmed_script(self):
         try:
@@ -144,7 +151,10 @@ class ExerciseScraper:
         for exercise in [e for e in self.folder_scraper.exercises if
                          (split_path(e)[-2] not in self.exclude and
                           split_path(e)[-1] not in self.exclude)]:
-            self.scrape_exercise(exercise)
+            try:
+                self.scrape_exercise(exercise)
+            except Exception as e:
+                logging.error(f'Problem loading {exercise} - {e}')
             self.folder_scraper.increment_and_log()
 
     def retrieve_vars(self):
@@ -152,7 +162,8 @@ class ExerciseScraper:
         try:
             if not self.js_scraper.script:
                 raise Exception('No script found')
-            parser = Parser(self.js_scraper.script)
+            respect_array_index = True if self.exercise == 'JuistFout' else False
+            parser = Parser(self.js_scraper.script, respect_array_index)
             with open('scrapers/output/parsed_data.json', 'w', encoding='utf-8') as f:
                 json.dump(parser.data, f, ensure_ascii=False, indent=4)
             fields = parser.parsed_data
@@ -203,18 +214,17 @@ class FolderScraper:
 
 def run_one():
     """When running one make sure def-config.yml configuration is set to the correct exercise"""
-    with open('./dev-config.yml', 'r') as f:
-        conf = yaml.safe_load(f)
-        for key, value in conf.items():
-            scraper = ExerciseScraper(
-                key, value['exclude'].split(','), value.get('model'))
-            scraper.scrape_exercise(
-                '../data/Invul1Per1/En4/GreenSpaces_linkwordsINV1.htm')
-            log.info('finished')
-            f = open("./scrapers/output/out.json", "w+", encoding="utf-8")
-            f.write(json.dumps(scraper.result, ensure_ascii=False))
-            f.close()
-            log.info(scraper.js_scraper.script)
+    scraper = ExerciseScraper('MeerkMJuist', [], 'mentori_eclt_legacy.LegacyExerciseData')
+    print(os.getcwd())
+    scraper.scrape_exercise(
+        './scrapers/data/Muis/MeerkMJuist/Sp5/fobiasMK.htm')
+    # scraper.scrape_exercise(
+    #     './scrapers/data/Muis/MeerkMJuist/Sp5/GOcartareyesmagosMK.htm')
+    
+    log.info('finished')
+    f = open("./scrapers/output/out_single.json", "w+", encoding="utf-8")
+    f.write(json.dumps(scraper.result, ensure_ascii=False))
+    f.close()
 
 
 def run():

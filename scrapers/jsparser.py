@@ -4,8 +4,9 @@ import json
 
 
 class Parser:
-    def __init__(self, data: str):
+    def __init__(self, data: str, respect_array_index: bool = False):
         self.script = data
+        self.respect_array_index = respect_array_index
         try:
             temp_data = parse(data)
         except Exception as e:
@@ -55,16 +56,41 @@ class Parser:
             if expression['left']['type'] == 'Identifier':
                 name = expression['left']['name']
                 return
+            
             if expression['left']['type'] == 'MemberExpression':
                 name = expression['left']['object']['name']
                 if name not in self.parsed_data.keys():
-                    self.parsed_data[name] = []
+                    if self.respect_array_index:
+                        self.parsed_data[name] = dict()
+                    else:
+                        self.parsed_data[name] = []
+                elif self.respect_array_index and isinstance(self.parsed_data[name], list):
+                    self.parsed_data[name] = dict()
+            
             if expression['right']['type'] == 'BinaryExpression' and expression['right']['operator'] == '+':
                 value = ""
                 value += self.resolve_addition(expression['right'], value)
             else:
                 value = expression['right']['value']
-            self.parsed_data[name].append(value)
+
+            if self.respect_array_index:
+                index = expression['left']['property']['raw']
+                self.parsed_data[name][index] = value
+            else:
+                self.parsed_data[name].append(value)
+
+    def convert_dicts_to_lists(self):
+        for key in self.parsed_data.keys():
+            if isinstance(self.parsed_data[key], dict):
+                keys = [int(k) for k in self.parsed_data[key].keys()]
+                keys.sort()
+                new_list = [""] * keys[-1]
+                print(keys)
+                print(new_list)
+                for k in keys:
+                    new_list[k - 1] = self.parsed_data[key][str(k)]
+                self.parsed_data[key] = new_list
+                
 
     def parse(self, data):
         try:
@@ -73,5 +99,6 @@ class Parser:
                     self.parse_declaration(command['declarations'])
                 elif command['type'] == 'ExpressionStatement':
                     self.parse_expression(command['expression'])
+            self.convert_dicts_to_lists()
         except Exception as e:
             raise e
