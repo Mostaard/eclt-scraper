@@ -85,8 +85,6 @@ class Parser:
                 keys = [int(k) for k in self.parsed_data[key].keys()]
                 keys.sort()
                 new_list = [""] * keys[-1]
-                print(keys)
-                print(new_list)
                 for k in keys:
                     new_list[k - 1] = self.parsed_data[key][str(k)]
                 self.parsed_data[key] = new_list
